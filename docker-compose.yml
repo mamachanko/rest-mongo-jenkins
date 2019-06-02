@@ -1,0 +1,24 @@
+version: '3.1'
+
+services:
+
+  mongo:
+    image: mongo:4.0.10
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo_home:/data/db
+
+  jenkins:
+    image: jenkins/jenkins:lts-alpine
+    restart: always
+    ports:
+      - 8081:8080
+      - 50000:50000
+    volumes:
+      - jenkins_home:/var/jenkins_home
+
+volumes:
+  mongo_home:
+  jenkins_home:
