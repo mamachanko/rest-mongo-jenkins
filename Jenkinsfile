@@ -4,7 +4,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                withDockerContainer('maven:3.6.1-jdk-11') {
+                    echo 'Building inside maven:3.6.1-jdk-11 ...'
+                }
             }
         }
         stage('Test') {
